@@ -62,6 +62,11 @@ type ViewabilityHelperCallbackTuple = {
     changed: Array<ViewToken>,
     ...
   }) => void,
+  onWindowItemsChanged?: (info: {
+    viewableItems: Array<ViewToken>,
+    changed: Array<ViewToken>,
+    ...
+  }) => void,
   ...
 };
 
@@ -436,6 +441,7 @@ export default class VirtualizedList extends StateSafePureComponent<
         pair => ({
           viewabilityHelper: new ViewabilityHelper(pair.viewabilityConfig),
           onViewableItemsChanged: pair.onViewableItemsChanged,
+          onWindowItemsChanged: pair.onWindowItemsChanged,
         }),
       );
     } else {
@@ -1840,6 +1846,7 @@ export default class VirtualizedList extends StateSafePureComponent<
         this._createViewToken,
         tuple.onViewableItemsChanged,
         cellsAroundViewport,
+        tuple.onWindowItemsChanged,
       );
     });
   }
