@@ -19,6 +19,7 @@ export type ViewToken = {
   key: string,
   index: ?number,
   isViewable: boolean,
+  isInViewPort?: boolean,
   section?: any,
   ...
 };
@@ -26,6 +27,11 @@ export type ViewToken = {
 export type ViewabilityConfigCallbackPair = {
   viewabilityConfig: ViewabilityConfig,
   onViewableItemsChanged: (info: {
+    viewableItems: Array<ViewToken>,
+    changed: Array<ViewToken>,
+    ...
+  }) => void,
+  onWindowItemsChanged?: (info: {
     viewableItems: Array<ViewToken>,
     changed: Array<ViewToken>,
     ...
@@ -60,6 +66,8 @@ export type ViewabilityConfig = {|
    * render.
    */
   waitForInteraction?: boolean,
+
+  windowOffset?: number | undefined,
 |};
 
 /**
@@ -80,6 +88,7 @@ class ViewabilityHelper {
   _timers: Set<number> = new Set();
   _viewableIndices: Array<number> = [];
   _viewableItems: Map<string, ViewToken> = new Map();
+  _windowItems: Map<string, ViewToken> = new Map();
 
   constructor(
     config: ViewabilityConfig = {viewAreaCoveragePercentThreshold: 0},
@@ -205,6 +214,11 @@ class ViewabilityHelper {
       last: number,
       ...
     },
+    onWindowItemsChanged?: ({
+      viewableItems: Array<ViewToken>,
+      changed: Array<ViewToken>,
+      ...
+    }) => void,
   ): void {
     const itemCount = props.getItemCount(props.data);
     if (
@@ -233,6 +247,16 @@ class ViewabilityHelper {
       return;
     }
     this._viewableIndices = viewableIndices;
+
+    if (viewableIndices && viewableIndices.length > 0 && onWindowItemsChanged) {
+      this._onUpdateCellsOnWindow(
+        props,
+        viewableIndices,
+        onWindowItemsChanged,
+        createViewToken,
+      );
+    }
+
     if (this._config.minimumViewTime) {
       const handle: TimeoutID = setTimeout(() => {
         /* $FlowFixMe[incompatible-call] (>=0.63.0 site=react_native_fb) This
@@ -314,6 +338,80 @@ class ViewabilityHelper {
     if (changed.length > 0) {
       this._viewableItems = nextItems;
       onViewableItemsChanged({
+        viewableItems: Array.from(nextItems.values()),
+        changed,
+        viewabilityConfig: this._config,
+      });
+    }
+  }
+
+  _onUpdateCellsOnWindow(
+    props: FrameMetricProps,
+    viewableIndices: Array<number>,
+    onWindowItemsChanged: ({
+      changed: Array<ViewToken>,
+      viewableItems: Array<ViewToken>,
+      ...
+    }) => void,
+    createViewToken: (
+      index: number,
+      isViewable: boolean,
+      props: FrameMetricProps,
+    ) => ViewToken,
+  ) {
+    const windowOffset = this._config.windowOffset || 2;
+    // Filter out indices that have gone out of view since this call was scheduled.
+    viewableIndices = viewableIndices.filter(ii =>
+      this._viewableIndices.includes(ii),
+    );
+
+    const viewableIndicesToCheck = [...viewableIndices];
+
+    if (viewableIndicesToCheck.length > 0) {
+      viewableIndicesToCheck.unshift(
+        ...Array.from(
+          {length: windowOffset},
+          (value, index) => viewableIndicesToCheck[0] + (index - windowOffset),
+        ),
+      );
+
+      viewableIndicesToCheck.push(
+        ...Array.from(
+          {length: windowOffset},
+          (value, index) =>
+            viewableIndicesToCheck[viewableIndicesToCheck.length - 1] +
+            (index + 1),
+        ),
+      );
+    }
+
+    const prevItems = this._windowItems;
+    const nextItems = new Map();
+    viewableIndicesToCheck.forEach(ii => {
+      if (ii >= 0 && ii < props.data.length) {
+        const viewable = createViewToken(
+          ii,
+          viewableIndices.includes(ii),
+          props,
+        );
+        nextItems.set(viewable.key, {...viewable, isInViewPort: true});
+      }
+    });
+
+    const changed = [];
+    for (const [key, viewable] of nextItems) {
+      if (!prevItems.has(key)) {
+        changed.push(viewable);
+      }
+    }
+    for (const [key, viewable] of prevItems) {
+      if (!nextItems.has(key)) {
+        changed.push({...viewable, isViewable: false, isInViewPort: false});
+      }
+    }
+    if (changed.length > 0) {
+      this._windowItems = nextItems;
+      onWindowItemsChanged({
         viewableItems: Array.from(nextItems.values()),
         changed,
         viewabilityConfig: this._config,

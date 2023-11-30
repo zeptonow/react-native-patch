@@ -53,11 +53,19 @@ export interface ViewabilityConfig {
    * render.
    */
   waitForInteraction?: boolean | undefined;
+
+  windowOffset?: number | undefined;
 }
 
 export interface ViewabilityConfigCallbackPair {
   viewabilityConfig: ViewabilityConfig;
   onViewableItemsChanged:
+    | ((info: {
+        viewableItems: Array<ViewToken>;
+        changed: Array<ViewToken>;
+      }) => void)
+    | null;
+  onWindowItemsChanged?:
     | ((info: {
         viewableItems: Array<ViewToken>;
         changed: Array<ViewToken>;

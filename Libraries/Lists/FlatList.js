@@ -425,6 +425,9 @@ class FlatList<ItemT> extends React.PureComponent<Props<ItemT>, void> {
           onViewableItemsChanged: this._createOnViewableItemsChanged(
             pair.onViewableItemsChanged,
           ),
+          onWindowItemsChanged: this._createOnViewableItemsChanged(
+            pair.onWindowItemsChanged,
+          ),
         }));
     } else if (this.props.onViewableItemsChanged) {
       this._virtualizedListPairs.push({
