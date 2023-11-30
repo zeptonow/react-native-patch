@@ -35,7 +35,9 @@ import java.util.List;
   @Override
   public void receiveEvent(int targetTag, String eventName, @Nullable WritableMap event) {
     if (event == null) {
-      throw new IllegalArgumentException("Native animated events must have event data.");
+      //PATCH: COMMENTED
+      // throw new IllegalArgumentException("Native animated events must have event data.");
+      return;
     }
 
     // Get the new value for the node by looking into the event map using the provided event path.
@@ -51,10 +53,12 @@ import java.util.List;
         } else if (keyType == ReadableType.Array) {
           currArray = currMap.getArray(key);
           currMap = null;
-        } else {
-          throw new UnexpectedNativeTypeException(
-              "Unexpected type " + keyType + " for key '" + key + "'");
         }
+        //PATCH: COMMENTED
+        // else {
+        //   throw new UnexpectedNativeTypeException(
+        //       "Unexpected type " + keyType + " for key '" + key + "'");
+        // }
       } else {
         int index = Integer.parseInt(mEventPath.get(i));
         ReadableType keyType = currArray.getType(index);
@@ -64,10 +68,12 @@ import java.util.List;
         } else if (keyType == ReadableType.Array) {
           currArray = currArray.getArray(index);
           currMap = null;
-        } else {
-          throw new UnexpectedNativeTypeException(
-              "Unexpected type " + keyType + " for index '" + index + "'");
-        }
+        } 
+        //PATCH: COMMENTED
+        // else {
+        //   throw new UnexpectedNativeTypeException(
+        //       "Unexpected type " + keyType + " for index '" + index + "'");
+        // }
       }
     }
 
@@ -83,6 +89,7 @@ import java.util.List;
   @Override
   public void receiveTouches(
       String eventName, WritableArray touches, WritableArray changedIndices) {
-    throw new RuntimeException("receiveTouches is not support by native animated events");
+    //PATCH: COMMENTED
+    // throw new RuntimeException("receiveTouches is not support by native animated events");
   }
 }

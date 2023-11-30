@@ -40,8 +40,10 @@ import com.facebook.react.bridge.ReadableMap;
   private double getInputNodeValue() {
     AnimatedNode animatedNode = mNativeAnimatedNodesManager.getNodeById(mInputNodeTag);
     if (animatedNode == null || !(animatedNode instanceof ValueAnimatedNode)) {
-      throw new JSApplicationCausedNativeException(
-          "Illegal node ID set as an input for Animated.DiffClamp node");
+      //PATCH: COMMENTED
+      // throw new JSApplicationCausedNativeException(
+      //     "Illegal node ID set as an input for Animated.DiffClamp node");
+      return 0;
     }
 
     return ((ValueAnimatedNode) animatedNode).getValue();

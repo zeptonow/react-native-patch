@@ -41,14 +41,18 @@ import com.facebook.react.bridge.ReadableMap;
           continue;
         }
         if (value == 0) {
-          throw new JSApplicationCausedNativeException(
-              "Detected a division by zero in Animated.divide node with Animated ID " + mTag);
+          //PATCH: COMMENTED
+          // throw new JSApplicationCausedNativeException(
+          //     "Detected a division by zero in Animated.divide node with Animated ID " + mTag);
+          return;
         }
         mValue /= value;
-      } else {
-        throw new JSApplicationCausedNativeException(
-            "Illegal node ID set as an input for Animated.divide node with Animated ID " + mTag);
-      }
+      } 
+      //PATCH: COMMENTED
+      // else {
+        // throw new JSApplicationCausedNativeException(
+        //     "Illegal node ID set as an input for Animated.divide node with Animated ID " + mTag);
+      // }
     }
   }
 
