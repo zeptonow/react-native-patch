@@ -1,0 +1,192 @@
+{
+  "installationFolder": "/pwd/packages/react-native/ReactAndroid/build/intermediates/prefab_package/debug/prefab",
+  "gradlePath": ":packages:react-native:ReactAndroid",
+  "packageInfo": {
+    "packageName": "ReactAndroid",
+    "packageVersion": "0.73.8",
+    "packageSchemaVersion": 2,
+    "packageDependencies": [],
+    "modules": [
+      {
+        "moduleName": "fabricjni",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/fabricjni",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "folly_runtime",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/folly_runtime",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "glog",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/glog",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "hermes_executor",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/hermes_executor",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "jscexecutor",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/jscexecutor",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "jsi",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/jsi",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "jsinspector",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/jsinspector",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_codegen_rncore",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_codegen_rncore",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_debug",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_debug",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_nativemodule_core",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_nativemodule_core",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_newarchdefaults",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_newarchdefaults",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_render_animations",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_render_animations",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_render_componentregistry",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_render_componentregistry",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_render_core",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_render_core",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_render_debug",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_render_debug",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_render_graphics",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_render_graphics",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_render_imagemanager",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_render_imagemanager",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_render_mapbuffer",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_render_mapbuffer",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_render_mounting",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_render_mounting",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_render_scheduler",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_render_scheduler",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_render_uimanager",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_render_uimanager",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "react_utils",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/react_utils",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "reactnativejni",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/reactnativejni",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "rrc_image",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/rrc_image",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "rrc_legacyviewmanagerinterop",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/rrc_legacyviewmanagerinterop",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "rrc_root",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/rrc_root",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "rrc_view",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/rrc_view",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "runtimeexecutor",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/runtimeexecutor",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "turbomodulejsijni",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/turbomodulejsijni",
+        "moduleExportLibraries": [],
+        "abis": []
+      },
+      {
+        "moduleName": "yoga",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/build/prefab-headers/yoga",
+        "moduleExportLibraries": [],
+        "abis": []
+      }
+    ]
+  }
+}

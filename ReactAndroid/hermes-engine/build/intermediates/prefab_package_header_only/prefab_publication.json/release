@@ -1,0 +1,19 @@
+{
+  "installationFolder": "/pwd/packages/react-native/ReactAndroid/hermes-engine/build/intermediates/prefab_package/release/prefab",
+  "gradlePath": ":packages:react-native:ReactAndroid:hermes-engine",
+  "packageInfo": {
+    "packageName": "hermes-engine",
+    "packageVersion": "0.73.8",
+    "packageSchemaVersion": 2,
+    "packageDependencies": [],
+    "modules": [
+      {
+        "moduleName": "libhermes",
+        "moduleHeaders": "/pwd/packages/react-native/ReactAndroid/hermes-engine/build/prefab-headers",
+        "moduleExportLibraries": [],
+        "moduleLibraryName": "libhermes",
+        "abis": []
+      }
+    ]
+  }
+}

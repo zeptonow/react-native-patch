@@ -5,6 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+// This is the settings.gradle.kts file used when the users
+// is doing a build from source. It's triggered as the user
+// will add an `includeBuild(../node_modules/react-native)` in
+// their settings.gradle.kts file.
+// More on this here: https://reactnative.dev/contributing/how-to-build-from-source
+
 pluginManagement {
   repositories {
     mavenCentral()
@@ -13,30 +19,18 @@ pluginManagement {
   }
 }
 
-include(
-    ":packages:react-native:ReactAndroid",
-    ":packages:react-native:ReactAndroid:flipper-integration",
-    ":packages:react-native:ReactAndroid:hermes-engine",
-    ":packages:react-native:ReactAndroid:external-artifacts",
-    ":packages:rn-tester:android:app")
+rootProject.name = "react-native-build-from-source"
 
-includeBuild("packages/react-native-gradle-plugin/")
+include(":packages:react-native:ReactAndroid")
 
-dependencyResolutionManagement {
-  versionCatalogs {
-    create("libs") { from(files("packages/react-native/gradle/libs.versions.toml")) }
-  }
-}
+project(":packages:react-native:ReactAndroid").projectDir = file("ReactAndroid/")
 
-rootProject.name = "react-native-github"
+include(":packages:react-native:ReactAndroid:hermes-engine")
 
-plugins {
-  id("com.gradle.enterprise").version("3.7.1")
-  id("org.gradle.toolchains.foojay-resolver-convention").version("0.5.0")
-}
+project(":packages:react-native:ReactAndroid:hermes-engine").projectDir =
+    file("ReactAndroid/hermes-engine/")
 
-// If you specify a file inside gradle/gradle-enterprise.gradle.kts
-// you can configure your custom Gradle Enterprise instance
-if (File("./gradle/gradle-enterprise.gradle.kts").exists()) {
-  apply(from = "./gradle/gradle-enterprise.gradle.kts")
-}
+include(":packages:react-native:ReactAndroid:flipper-integration")
+
+project(":packages:react-native:ReactAndroid:flipper-integration").projectDir =
+    file("ReactAndroid/flipper-integration/")
