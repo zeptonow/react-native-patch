@@ -571,6 +571,10 @@ class WithRuntimeDecorator : public RuntimeDecorator<Plain, Base> {
     Around around{with_};
     return RD::cloneSymbol(pv);
   };
+  Runtime::PointerValue* cloneBigInt(const Runtime::PointerValue* pv) override {
+    Around around{with_};
+    return RD::cloneBigInt(pv);
+  };
   Runtime::PointerValue* cloneString(const Runtime::PointerValue* pv) override {
     Around around{with_};
     return RD::cloneString(pv);
@@ -599,6 +603,10 @@ class WithRuntimeDecorator : public RuntimeDecorator<Plain, Base> {
     Around around{with_};
     return RD::createPropNameIDFromString(str);
   };
+  PropNameID createPropNameIDFromSymbol(const Symbol& sym) override {
+    Around around{with_};
+    return RD::createPropNameIDFromSymbol(sym);
+  };
   std::string utf8(const PropNameID& id) override {
     Around around{with_};
     return RD::utf8(id);
@@ -611,6 +619,31 @@ class WithRuntimeDecorator : public RuntimeDecorator<Plain, Base> {
   std::string symbolToString(const Symbol& sym) override {
     Around around{with_};
     return RD::symbolToString(sym);
+  };
+
+  BigInt createBigIntFromInt64(int64_t i) override {
+    Around around{with_};
+    return RD::createBigIntFromInt64(i);
+  };
+  BigInt createBigIntFromUint64(uint64_t i) override {
+    Around around{with_};
+    return RD::createBigIntFromUint64(i);
+  };
+  bool bigintIsInt64(const BigInt& bi) override {
+    Around around{with_};
+    return RD::bigintIsInt64(bi);
+  };
+  bool bigintIsUint64(const BigInt& bi) override {
+    Around around{with_};
+    return RD::bigintIsUint64(bi);
+  };
+  uint64_t truncate(const BigInt& bi) override {
+    Around around{with_};
+    return RD::truncate(bi);
+  };
+  String bigintToString(const BigInt& bi, int i) override {
+    Around around{with_};
+    return RD::bigintToString(bi, i);
   };
 
   String createStringFromAscii(const char* str, size_t length) override {
@@ -642,6 +675,20 @@ class WithRuntimeDecorator : public RuntimeDecorator<Plain, Base> {
     Around around{with_};
     return RD::getHostFunction(f);
   };
+
+  bool hasNativeState(const Object& o) override {
+    Around around{with_};
+    return RD::hasNativeState(o);
+  }
+  std::shared_ptr<NativeState> getNativeState(const Object& o) override {
+    Around around{with_};
+    return RD::getNativeState(o);
+  }
+  void setNativeState(const Object& o, std::shared_ptr<NativeState> state)
+      override {
+    Around around{with_};
+    RD::setNativeState(o, state);
+  }
 
   Value getProperty(const Object& o, const PropNameID& name) override {
     Around around{with_};
