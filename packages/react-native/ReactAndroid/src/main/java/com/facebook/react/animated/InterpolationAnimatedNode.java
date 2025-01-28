@@ -101,8 +101,10 @@ import java.util.regex.Pattern;
         case EXTRAPOLATE_TYPE_EXTEND:
           break;
         default:
-          throw new JSApplicationIllegalArgumentException(
-              "Invalid extrapolation type " + extrapolateLeft + "for left extrapolation");
+          //PATCH: COMMENTED
+          // throw new JSApplicationIllegalArgumentException(
+          //     "Invalid extrapolation type " + extrapolateLeft + "for left extrapolation");
+          return inputMin;
       }
     }
 
@@ -116,8 +118,10 @@ import java.util.regex.Pattern;
         case EXTRAPOLATE_TYPE_EXTEND:
           break;
         default:
-          throw new JSApplicationIllegalArgumentException(
-              "Invalid extrapolation type " + extrapolateRight + "for right extrapolation");
+          //PATCH: COMMENTED
+          // throw new JSApplicationIllegalArgumentException(
+          //     "Invalid extrapolation type " + extrapolateRight + "for right extrapolation");
+          return inputMax;
       }
     }
 
@@ -253,10 +257,14 @@ import java.util.regex.Pattern;
   @Override
   public void onAttachedToNode(AnimatedNode parent) {
     if (mParent != null) {
-      throw new IllegalStateException("Parent already attached");
+      //PATCH: COMMENTED
+      // throw new IllegalStateException("Parent already attached");
+      return;
     }
     if (!(parent instanceof ValueAnimatedNode)) {
-      throw new IllegalArgumentException("Parent is of an invalid type");
+      //PATCH: COMMENTED
+      // throw new IllegalArgumentException("Parent is of an invalid type");
+      return;
     }
     mParent = (ValueAnimatedNode) parent;
   }
@@ -264,7 +272,9 @@ import java.util.regex.Pattern;
   @Override
   public void onDetachedFromNode(AnimatedNode parent) {
     if (parent != mParent) {
-      throw new IllegalArgumentException("Invalid parent node provided");
+      //PATCH: COMMENTED
+      // throw new IllegalArgumentException("Invalid parent node provided");
+      return;
     }
     mParent = null;
   }

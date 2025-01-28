@@ -38,8 +38,9 @@ import com.facebook.react.bridge.ReadableMap;
       if (animatedNode != null && animatedNode instanceof ValueAnimatedNode) {
         mValue += ((ValueAnimatedNode) animatedNode).getValue();
       } else {
-        throw new JSApplicationCausedNativeException(
-            "Illegal node ID set as an input for Animated.Add node");
+        //PATCH: COMMENTED
+        // throw new JSApplicationCausedNativeException(
+        //     "Illegal node ID set as an input for Animated.Add node");
       }
     }
   }

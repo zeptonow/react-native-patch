@@ -42,8 +42,9 @@ import com.facebook.react.bridge.ReadableMap;
           mValue -= value;
         }
       } else {
-        throw new JSApplicationCausedNativeException(
-            "Illegal node ID set as an input for Animated.subtract node");
+        //PATCH: COMMENTED
+        // throw new JSApplicationCausedNativeException(
+        //     "Illegal node ID set as an input for Animated.subtract node");
       }
     }
   }

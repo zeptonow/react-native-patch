@@ -35,7 +35,8 @@ import com.facebook.react.bridge.ReadableMap;
    * start animating with the new properties (different destination or spring settings)
    */
   public void resetConfig(ReadableMap config) {
-    throw new JSApplicationCausedNativeException(
-        "Animation config for " + getClass().getSimpleName() + " cannot be reset");
+    //PATCH: COMMENTED
+    // throw new JSApplicationCausedNativeException(
+    //     "Animation config for " + getClass().getSimpleName() + " cannot be reset");
   }
 }
